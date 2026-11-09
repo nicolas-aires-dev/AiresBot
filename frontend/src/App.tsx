@@ -62,7 +62,7 @@ function App() {
       <header className="topbar">
         <a className="brand" href="#inicio" aria-label="AiresBot, início"><span className="brand-mark">a.</span><span>aires<span className="brand-light">bot</span></span></a>
         <div className="topbar-note"><span className="status-dot" /> chatbot pessoal <span className="topbar-divider">·</span> v1.0</div>
-        <a className="top-link" href="https://github.com/" target="_blank" rel="noreferrer">ver projeto <span aria-hidden="true">↗</span></a>
+        <a className="top-link" href="https://github.com/nicolas-aires-dev/airesbot" target="_blank" rel="noreferrer">Ver Projeto<span aria-hidden="true">↗</span></a>
       </header>
 
       <section className="chat-layout" id="inicio">
@@ -80,7 +80,9 @@ function App() {
             <button onClick={() => void sendMessage('Quem é Nícolas?')}><span>01</span> Quem é Nícolas?</button>
             <button onClick={() => void sendMessage('Qual é a stack de tecnologias?')}><span>02</span> Qual é a stack?</button>
             <button onClick={() => void sendMessage('Onde encontro o currículo?')}><span>03</span> Ver currículo</button>
-            <button onClick={() => void sendMessage('Como posso entrar em contato?')}><span>04</span> Como entrar em contato?</button>
+            <button onClick={() => void sendMessage('Projetos de Nícolas')}><span>04</span> Projetos </button>
+            <button onClick={() => void sendMessage('Expêriencia profissional de Nícolas')}><span>05</span> Experiências Profissional</button>
+            <button onClick={() => void sendMessage('Como posso entrar em contato?')}><span>06</span> Como entrar em contato?</button>
           </div>
           <div className="aside-footer"><span>FEITO COM CURIOSIDADE</span><span>✳</span></div>
         </aside>
