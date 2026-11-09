@@ -2,15 +2,12 @@
 
 Replace the PROFILE values with verified information before publishing the project.
 """
+import unicodedata
 
 PROFILE = {
     "name": "Nícolas Aires",
     "headline": "Desenvolvedor de software",
-    "summary": "Nícolas é desenvolvedor de software com foco em Python"
-    "desenvolvimento backend, APIs REST e automação de processos. "
-    "Possui experiência na criação de soluções para problemas "
-    "operacionais e integração de sistemas, buscando unir tecnologia "
-    "e necessidades reais do negócio.",
+    "summary": "Nícolas é desenvolvedor de software com foco em Python desenvolvimento backend, APIs REST e automação de processos. Possui experiência na criação de soluções para problemas operacionais e integração de sistemas, buscando unir tecnologia e necessidades reais do negócio.",
     "age": 23,  # Example: 25
     "education": "Cursando Engenharia de Software, com previsão de formação para Jul 2028.",
     "stack": ["Python", "Django", "APIs REST", "Git", "Github", "Autenticação JWT", "Docker", "Celery", "Redis", "Linux", "Pytest", "AWS EC2", "SQL", "React", "TypeScript"],  # Example: ["Python", "Django REST Framework", "React", "TypeScript"]
@@ -32,10 +29,20 @@ FALLBACK = (
     "sobre quem é o Nícolas, sua stack, idade, currículo, contato, GitHub ou LinkedIn."
 )
 
+def normalize(text):
+    text = unicodedata.normalize("NFD", text)
+    return "".join(
+        char for char in text
+        if unicodedata.category(char) != "Mn"
+    ).lower()
 
-def _has_any(text: str, *terms: str) -> bool:
-    return any(term in text for term in terms)
+def _has_any(text, *keywords):
+    normalized_text = normalize(text)
 
+    return any(
+        normalize(keyword) in normalized_text
+        for keyword in keywords
+    )
 
 def _value_or_pending(value, label: str) -> str:
     if not value:
@@ -69,16 +76,16 @@ def answer_question(message: str) -> str:
         )
         return f"Os principais projetos de {name} são: \n\n{projects}"
     if _has_any(text, "quem é", "quem e", "sobre", "apresenta"):
-        return f"{name} é {PROFILE['headline']}. {PROFILE['summary']}"
+        return PROFILE["summary"]
     if _has_any(text, "formação", "formacao", "faculdade", "graduação", "graduacao", "formatura"):
         return f"{name} está {PROFILE['education']}"
     if _has_any(text, "oi", "olá", "ola", "bom dia", "boa tarde", "boa noite") and len(text.split()) <= 3:
         return f"Oi! Sou o AiresBot. Posso contar um pouco sobre {name} e seus projetos."
+    if _has_any(text, "vaga", "oportunidade", "trabalho", "buscando", "procura"):
+        return f"{name} está buscando {PROFILE['looking_for']}."
     if _has_any(text, "idade", "quantos anos", "anos tem"):
         age = PROFILE["age"]
         return f"{name} tem {age} anos." if age else _value_or_pending(age, "Idade")
-    if _has_any(text, "vaga", "oportunidade", "trabalho", "buscando", "procura"):
-        return f"{name} está buscando {PROFILE['looking_for']}."
     if _has_any(text, "local", "mora", "cidade", "onde fica"):
         return f"{name} está em {PROFILE['location']}."
     if _has_any(text, "ajuda", "perguntas", "o que sabe", "o que posso perguntar"):
