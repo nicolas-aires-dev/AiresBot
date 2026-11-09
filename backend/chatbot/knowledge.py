@@ -1,20 +1,30 @@
 """Personal data used by the rule-based chatbot.
 
-Replace the TODO values with verified information before publishing the project.
+Replace the PROFILE values with verified information before publishing the project.
 """
 
 PROFILE = {
-    "name": "Nícolas Santos",
+    "name": "Nícolas Aires",
     "headline": "Desenvolvedor de software",
-    "summary": "Sou desenvolvedor de software. Estou organizando este espaço para compartilhar minha trajetória e meus projetos.",
-    "age": None,  # Example: 25
-    "stack": [],  # Example: ["Python", "Django REST Framework", "React", "TypeScript"]
+    "summary": "Nícolas é desenvolvedor de software com foco em Python"
+    "desenvolvimento backend, APIs REST e automação de processos. "
+    "Possui experiência na criação de soluções para problemas "
+    "operacionais e integração de sistemas, buscando unir tecnologia "
+    "e necessidades reais do negócio.",
+    "age": 23,  # Example: 25
+    "education": "Cursando Engenharia de Software, com previsão de formação para Jul 2028.",
+    "stack": ["Python", "Django", "APIs REST", "Git", "Github", "Autenticação JWT", "Docker", "Celery", "Redis", "Linux", "Pytest", "AWS EC2", "SQL", "React", "TypeScript"],  # Example: ["Python", "Django REST Framework", "React", "TypeScript"]
     "resume_url": None,
-    "email": None,
-    "github_url": None,
-    "linkedin_url": None,
-    "location": "Brasil",
-    "looking_for": "oportunidades na área de desenvolvimento de software",
+    "email": "ni_colasaires@hotmail.com",
+    "github_url": "https://github.com/nicolas-aires-dev",
+    "linkedin_url": "https://br.linkedin.com/in/nairesdev",
+    "location": "Sorocaba - SP, disponível para vagas remotas em todo o Brasil, e Híbridas a depender do modelo.",
+    "looking_for": "Oportunidades que me permitam focar exclusivaente em tecnologia!",
+    "projects": ["AiresBot: Projeto portfólio interativo via chatbot.",
+                 "DxfReafer: Projeto de automação de processamento de projetos CAD.",
+                 "UrlShortener: API de encurtador de link com processamento assincrono, testes e dockerização.",
+                 "CarsSale: Sistema CRUD fullstack com integração à OpenAI e deploy via AWS EC2.",
+                 "FlixAPI: API REST com autenticação JWT, organização de endpoints."]
 }
 
 FALLBACK = (
@@ -38,19 +48,6 @@ def answer_question(message: str) -> str:
     text = " ".join(message.casefold().replace("?", " ").replace("!", " ").split())
     name = PROFILE["name"]
 
-    if _has_any(text, "oi", "olá", "ola", "bom dia", "boa tarde", "boa noite") and len(text.split()) <= 3:
-        return f"Oi! Sou o AiresBot. Posso contar um pouco sobre {name} e seus projetos."
-    if _has_any(text, "quem é", "quem e", "sobre", "apresenta", "fale de", "me fale"):
-        return f"{name} é {PROFILE['headline']}. {PROFILE['summary']}"
-    if _has_any(text, "stack", "tecnologias", "tecnologia", "linguagens", "framework", "ferramentas"):
-        stack = PROFILE["stack"]
-        return f"A stack de {name} inclui: {', '.join(stack)}." if stack else _value_or_pending(stack, "Stack")
-    if _has_any(text, "idade", "quantos anos", "anos tem"):
-        age = PROFILE["age"]
-        return f"{name} tem {age} anos." if age else _value_or_pending(age, "Idade")
-    if _has_any(text, "currículo", "curriculo", "cv", "resume", "experiência", "experiencia", "formação", "formacao"):
-        url = PROFILE["resume_url"]
-        return f"Você pode acessar o currículo de {name} aqui: {url}" if url else _value_or_pending(url, "Link do currículo")
     if _has_any(text, "contato", "contatar", "email", "e-mail", "falar com", "telefone"):
         email = PROFILE["email"]
         return f"Você pode entrar em contato com {name} pelo e-mail {email}." if email else _value_or_pending(email, "Contato")
@@ -60,6 +57,26 @@ def answer_question(message: str) -> str:
     if "linkedin" in text or "linked in" in text:
         url = PROFILE["linkedin_url"]
         return f"O LinkedIn de {name} está em {url}." if url else _value_or_pending(url, "LinkedIn")
+    if _has_any(text, "currículo", "curriculo", "cv", "resume", "experiência", "experiencia", "formação", "formacao"):
+        url = PROFILE["resume_url"]
+        return f"Você pode acessar o currículo de {name} aqui: {url}" if url else _value_or_pending(url, "Link do currículo")
+    if _has_any(text, "stack", "tecnologias", "tecnologia", "linguagens", "framework", "ferramentas"):
+        stack = PROFILE["stack"]
+        return f"A stack de {name} inclui: {', '.join(stack)}." if stack else _value_or_pending(stack, "Stack")
+    if _has_any(text, "projetos", "projeto", "projetos de", "projetos do"):
+        projects = "\n".join(
+            f"•{project}" for project in PROFILE["projects"]
+        )
+        return f"Os principais projetos de {name} são: \n\n{projects}"
+    if _has_any(text, "quem é", "quem e", "sobre", "apresenta"):
+        return f"{name} é {PROFILE['headline']}. {PROFILE['summary']}"
+    if _has_any(text, "formação", "formacao", "faculdade", "graduação", "graduacao", "formatura"):
+        return f"{name} está {PROFILE['education']}"
+    if _has_any(text, "oi", "olá", "ola", "bom dia", "boa tarde", "boa noite") and len(text.split()) <= 3:
+        return f"Oi! Sou o AiresBot. Posso contar um pouco sobre {name} e seus projetos."
+    if _has_any(text, "idade", "quantos anos", "anos tem"):
+        age = PROFILE["age"]
+        return f"{name} tem {age} anos." if age else _value_or_pending(age, "Idade")
     if _has_any(text, "vaga", "oportunidade", "trabalho", "buscando", "procura"):
         return f"{name} está buscando {PROFILE['looking_for']}."
     if _has_any(text, "local", "mora", "cidade", "onde fica"):
