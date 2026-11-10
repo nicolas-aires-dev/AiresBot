@@ -5,6 +5,30 @@ import './App.css'
 type Message = { id: number; role: 'bot' | 'user'; text: string }
 type ApiResponse = { answer: string }
 
+function linkify(text: string) {
+  const urlPattern = /https?:\/\/[^\s<]+/g
+  const parts = []
+  let lastIndex = 0
+
+  for (const match of text.matchAll(urlPattern)) {
+    const rawUrl = match[0]
+    const url = rawUrl.replace(/[),.!?;:]+$/, '')
+    if (!url) continue
+    const start = match.index ?? 0
+    parts.push(text.slice(lastIndex, start))
+    parts.push(
+      <a key={start} href={url} target="_blank" rel="noreferrer">
+        {url}
+      </a>,
+    )
+    parts.push(rawUrl.slice(url.length))
+    lastIndex = start + rawUrl.length
+  }
+
+  parts.push(text.slice(lastIndex))
+  return parts
+}
+
 const suggestions = ['Quem é Nícolas?', 'Qual é a stack dele?', 'Como entrar em contato?']
 const apiUrl = `${import.meta.env.VITE_API_URL ?? 'http://127.0.0.1:8000'}/api/chat/`
 
@@ -99,7 +123,7 @@ function App() {
             {messages.map((message) => (
               <div className={`message-row ${message.role}`} key={message.id}>
                 {message.role === 'bot' && <div className="mini-avatar">✳</div>}
-                <div className="message-content"><div className="bubble">{message.text}</div><span className="message-time">{message.role === 'bot' ? 'AiresBot' : 'Você'} · agora</span></div>
+                <div className="message-content"><div className="bubble">{message.role === 'bot' ? linkify(message.text) : message.text}</div><span className="message-time">{message.role === 'bot' ? 'AiresBot' : 'Você'} · agora</span></div>
               </div>
             ))}
             {loading && <div className="message-row bot"><div className="mini-avatar">✳</div><div className="bubble typing"><i /><i /><i /></div></div>}
