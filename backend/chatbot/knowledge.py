@@ -19,7 +19,7 @@ PROFILE = {
     "location": "Sorocaba - SP, disponível para vagas remotas em todo o Brasil, e Híbridas a depender do modelo.",
     "looking_for": "oportunidades que o permitam acelerar sua carreira em tecnologia, buscando projetos cada vez mais desafiantes, e evoluir enquanto contribui com soluções eficientes que impactem verdadeiramente o mercado e a vida dos clientes.",
     "projects": ["AiresBot: Projeto portfólio interativo via chatbot.",
-                 "DxfReafer: Projeto de automação de processamento de projetos CAD.",
+                 "DxfReader: Projeto de automação de processamento de projetos CAD.",
                  "UrlShortener: API de encurtador de link com processamento assincrono, testes e dockerização.",
                  "CarsSale: Sistema CRUD fullstack com integração à OpenAI e deploy via AWS EC2.",
                  "FlixAPI: API REST com autenticação JWT, organização de endpoints."],
@@ -36,17 +36,17 @@ PROFILE = {
 
     "UrlShortener Resume" : "API REST de encutrtamento de links com BASE62.",
     "UrlShortener Objective" : "criar um projeto utilizado no dia a dia para estudar Dockerização de ambiente e Processamento Assíncrono com documentação de requisições via Postman.",
-    "UrlShortener Technologies" : "Python, Django, Django Rest Framework, Celery, Redis, Sqlite, Postman",
+    "UrlShortener Technologies" : "Python, Django, Django Rest Framework, Autenticação JWT, Celery, Redis, Sqlite, Postman",
     "UrlShortener Code" : "https://github.com/nicolas-aires-dev/url_shortener",
 
-    "CarsSale Resume" : "Projeto CRUD Fullstack de cadastro de carros à venda.",
-    "CarsSale Objective" : "Estudar integração com APIs externas (OpenAI), desenvolvimento Frontend e Deploy em com uWSGI+ Nginx em AWS EC2.",
+    "CarsSale Resume" : "projeto CRUD Fullstack de cadastro de carros à venda.",
+    "CarsSale Objective" : "estudar integração com APIs externas (OpenAI para gerar descrição automática do anúncio dos veículos), desenvolvimento Frontend e Deploy em com uWSGI+ Nginx em AWS EC2.",
     "CarsSale Technologies" : "Python, Django, Django Templates, OpenAI API, SQL Server, uWSGI/Nginx, Docker",
     "CarsSale Code" : "https://github.com/nicolas-aires-dev/CarsSale",
 
     "FlixAPI Resume" : "CRUD v1 para gerenciamento de filmes, generos e outras entidades relacionadas utilizando Django puro, e v2 com Django Rest Framework.",
     "FlixAPI Technologies" : "Python, Django, Django REST Framework, Sqlite",
-    "FlixAPI Objective" : "estudar o ganho de performance no desenvolvimento com DRF e em relação ao desenvolvimento com Django puro.",
+    "FlixAPI Objective" : "estudar o ganho de performance no desenvolvimento com DRF em relação ao desenvolvimento com Django puro.",
     "FlixAPI Code" : "https://github.com/nicolas-aires-dev/Flix_API",
 }
 
@@ -121,11 +121,12 @@ def answer_question(message: str) -> str:
 
     #UrlShortener
     if _has_any(text, "UrlShortener", "projeto encurtador", "projeto encurtador de links", "encurtador de links"):
-        return f"O projeto UrlShortener é uma {PROFILE["UrlShortener Resume"]} \n\n Com o objetivo de {PROFILE["UrlShortener Objective"]} \n\n Utilizando as tenologias: {PROFILE["UrlShortener Technologies"]} \n\n Link do repositório: {PROFILE['UrlShortener Code']}"
+        return f"O projeto UrlShortener é uma {PROFILE["UrlShortener Resume"]} \n\n Com o objetivo de {PROFILE["UrlShortener Objective"]} \n\n Utilizando as tecnologias: {PROFILE["UrlShortener Technologies"]} \n\n Link do repositório: {PROFILE['UrlShortener Code']}"
 
     #CarsSale
     if _has_any(text, "CarsSale", "projeto de carros", "projeto de venda de carros"):
-        return f"O projeto UrlShortener é uma {PROFILE["UrlShortener Resume"]} \n\n Com o objetivo de {PROFILE["UrlShortener Objective"]} \n\n Utilizando as tenologias: {PROFILE["UrlShortener Technologies"]} \n\n Link do repositório: {PROFILE['UrlShortener Code']}"
+        return f"O projeto CarsSale é um {PROFILE["CarsSale Resume"]} \n\n Com o objetivo de {PROFILE["CarsSale Objective"]} \n\n Utilizando as tecnologias: {PROFILE["CarsSale Technologies"]} \n\n Link do repositório: {PROFILE['CarsSale Code']}"
+    
     #FlixAPI
     if _has_any(text, "FlixAPI", "projeto netflix", "projeto de filmes", "projeto filmes"):
         return f"O projeto FlixAPI é um {PROFILE["FlixAPI Resume"]} \n\n Com o objetivo de {PROFILE["FlixAPI Objective"]} \n\n Usando as tecnologias: {PROFILE["FlixAPI Technologies"]} \n\n Link do repositório: {PROFILE["FlixAPI Code"]}"
