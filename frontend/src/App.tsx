@@ -97,8 +97,8 @@ function App() {
           <h1>Uma conversa<br />sobre <span>mim.</span></h1>
           <p className="intro-copy">Conheça minha trajetória, minhas tecnologias e o que estou buscando. Pode perguntar direto ao ponto.</p>
           <div className="profile-card">
-            <div className="avatar">N<span className="avatar-spark">✳</span></div>
-            <div><div className="profile-name">Nícolas Santos</div><div className="profile-role">Desenvolvedor · Brasil</div></div>
+            <div className="avatar">N<span className="avatar-spark">α</span></div>
+            <div><div className="profile-name">Nícolas Aires</div><div className="profile-role">Desenvolvedor · Brasil</div></div>
             <span className="profile-arrow">↗</span>
           </div>
           <div className="topics-label">EXPERIMENTE PERGUNTAR</div>
@@ -107,15 +107,16 @@ function App() {
             <button onClick={() => void sendMessage('Qual é a stack de tecnologias?')}><span>02</span> Qual é a stack?</button>
             <button onClick={() => void sendMessage('Onde encontro o currículo?')}><span>03</span> Ver currículo</button>
             <button onClick={() => void sendMessage('Projetos de Nícolas')}><span>04</span> Projetos </button>
-            <button onClick={() => void sendMessage('Expêriencia profissional de Nícolas')}><span>05</span> Experiência Profissional</button>
-            <button onClick={() => void sendMessage('Como posso entrar em contato?')}><span>06</span> Como entrar em contato?</button>
+            <button onClick={() => void sendMessage('Formação de Nícolas')}><span>05</span> Formação </button>
+            <button onClick={() => void sendMessage('Expêriencia profissional de Nícolas')}><span>08</span> Experiência Profissional</button>
+            <button onClick={() => void sendMessage('Como posso entrar em contato?')}><span>09</span> Como entrar em contato?</button>
           </div>
-          <div className="aside-footer"><span>FEITO COM CURIOSIDADE</span><span>✳</span></div>
+          <div className="aside-footer"><span>FEITO COM CURIOSIDADE</span><span>α</span></div>
         </aside>
 
         <section className="chat-card" aria-label="Conversa com AiresBot">
           <div className="chat-header">
-            <div className="bot-avatar"><span>✳</span></div>
+            <div className="bot-avatar"><span>α</span></div>
             <div className="chat-title"><strong>AiresBot</strong><span><i /> online agora</span></div>
             <button className="more-button" aria-label="Mais opções">···</button>
           </div>
@@ -124,11 +125,11 @@ function App() {
             <div className="day-label"><span /> HOJE <span /></div>
             {messages.map((message) => (
               <div className={`message-row ${message.role}`} key={message.id}>
-                {message.role === 'bot' && <div className="mini-avatar">✳</div>}
+                {message.role === 'bot' && <div className="mini-avatar">α</div>}
                 <div className="message-content"><div className="bubble">{message.role === 'bot' ? linkify(message.text) : message.text}</div><span className="message-time">{message.role === 'bot' ? 'AiresBot' : 'Você'} · agora</span></div>
               </div>
             ))}
-            {loading && <div className="message-row bot"><div className="mini-avatar">✳</div><div className="bubble typing" role="status" aria-label="AiresBot está digitando"><i /><i /><i /></div></div>}
+            {loading && <div className="message-row bot"><div className="mini-avatar">α</div><div className="bubble typing" role="status" aria-label="AiresBot está digitando"><i /><i /><i /></div></div>}
             {apiError && <div className="connection-note">A conexão com o backend falhou.</div>}
             <div ref={bottomRef} />
           </div>
@@ -140,7 +141,7 @@ function App() {
           <div className="chat-footnote">AiresBot pode cometer erros. Confirme as informações importantes.</div>
         </section>
       </section>
-      <footer className="page-footer"><span>© 2026 NÍCOLAS SANTOS</span><span>UM PROJETO DE PORTFÓLIO <b>✳</b></span><span>REACT <i>·</i> DJANGO REST FRAMEWORK</span></footer>
+      <footer className="page-footer"><span>© 2026 NÍCOLAS SANTOS</span><span>UM PROJETO DE PORTFÓLIO <b>α</b></span><span>REACT <i>·</i> DJANGO REST FRAMEWORK</span></footer>
     </main>
   )
 }
