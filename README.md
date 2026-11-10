@@ -64,7 +64,7 @@ E retorna uma resposta neste formato:
 
 ## Próximos passos
 
-- **Autenticação:** planejo implementar autenticação em uma etapa futura.
+- **Autenticação:** planejo implementar autenticação em sessões numa etapa futura.
 - **v2 com IA:** mais adiante, pretendo lançar a v2 integrada com IA para ampliar a experiência de conversa.
 
 Esses itens fazem parte do roadmap e ainda não estão disponíveis na versão atual.
