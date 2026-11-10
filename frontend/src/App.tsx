@@ -141,7 +141,7 @@ function App() {
           <div className="chat-footnote">AiresBot pode cometer erros. Confirme as informações importantes.</div>
         </section>
       </section>
-      <footer className="page-footer"><span>© 2026 NÍCOLAS SANTOS</span><span>UM PROJETO DE PORTFÓLIO <b>α</b></span><span>REACT <i>·</i> DJANGO REST FRAMEWORK</span></footer>
+      <footer className="page-footer"><span>© 2026 NÍCOLAS AIRES</span><span>UM PROJETO DE PORTFÓLIO <b>α</b></span><span>REACT <i>·</i> DJANGO REST FRAMEWORK</span></footer>
     </main>
   )
 }

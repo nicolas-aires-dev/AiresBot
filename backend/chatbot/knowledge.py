@@ -9,7 +9,7 @@ PROFILE = {
     "headline": "Desenvolvedor de software",
     "summary": "Nícolas é desenvolvedor de software com foco em Python desenvolvimento backend, APIs REST e automação de processos. Possui experiência na criação de soluções para problemas operacionais e integração de sistemas, buscando unir tecnologia e necessidades reais do negócio.",
     "age": 23,  # Example: 25
-    "education": "aguardando os trâmites da faculdade para transferir o curso para Engenharia de Software, com previsão de formação para Jul 2028.",
+    "education": "em transferência do curso de Análise e desenvolvimento de sistemas para o curso para Engenharia de Software, com previsão de formação para Jul 2028.",
     "stack": ["Python", "Django", "APIs REST", "Git", "Github", "Autenticação JWT", "Docker", "Celery", "Redis", "Linux", "Pytest", "AWS EC2", "SQL", "React", "TypeScript"],  # Example: ["Python", "Django REST Framework", "React", "TypeScript"]
     "resume_url": "https://1drv.ms/b/c/4111fe76ed94f350/IQBGuo4ZB35GRZxiDo_kidm0AQTPdA-ywJJDxYOD6kln7ls?e=m379v0",
     "experience": "Estudante de Análise e Desenvolvimento de Sistemas, em transição para Engenharia de Software, com experiência na identificação de oportunidades de melhoria e desenvolvimento de soluções tecnológicas para problemas operacionais. Atuação prática com Python, automação de processos, desenvolvimento backend, APIs REST e integração de sistemas. Experiência na iniciativa e implantação de automações departamentais, incluindo ferramentas de processamento de arquivos técnicos e soluções com Inteligência Artificial. Conhecimentos em bancos de dados relacionais, Git/Github, Docker e desenvolvimento de aplicações. Perfil investigativo, curioso e movido à resolução de problemas, com facilidade para aprender novas tecnologias e utilizar ferramentas assistidas por IA como apoio ao desenvolvimento e à produtividade.",
@@ -19,7 +19,7 @@ PROFILE = {
     "location": "Sorocaba - SP, disponível para vagas remotas em todo o Brasil, e Híbridas a depender do modelo.",
     "looking_for": "oportunidades que o permitam acelerar sua carreira em tecnologia, buscando projetos cada vez mais desafiantes, e evoluir enquanto contribui com soluções eficientes que impactem verdadeiramente o mercado e a vida dos clientes.",
     "projects": ["AiresBot: Projeto portfólio interativo via chatbot.",
-                 "DxfReafer: Projeto de automação de processamento de projetos CAD.",
+                 "DxfReader: Projeto de automação de processamento de projetos CAD.",
                  "UrlShortener: API de encurtador de link com processamento assincrono, testes e dockerização.",
                  "CarsSale: Sistema CRUD fullstack com integração à OpenAI e deploy via AWS EC2.",
                  "FlixAPI: API REST com autenticação JWT, organização de endpoints."],
@@ -30,23 +30,23 @@ PROFILE = {
     "DxfReader Code" : "https://github.com/nicolas-aires-dev/dxf_reader",
 
     "AiresBot Resume" : "Chatbot/Portfólio baseado em regras e palavras chave, utilizando lógica de identificação e intenções e respostas automáticas, que permite que o usuário conheça a trajetória de Nícolas de forma interativa.",
-    "AiresBot Objective" : "criar um portfólio interativo que fugisse do convêncional feito por grande parte dos desenvolvedores; Estudo de desenvolvimento de Chatbots para um futuro projeto de automação de fluxo de informações interno.",
+    "AiresBot Objective" : "criar um portfólio interativo que fugisse do convêncional feito por grande parte dos desenvolvedores e estudo de desenvolvimento de Chatbots para um futuro projeto de automação de fluxo de informações interno.",
     "AiresBot Technologies" : "Python, TypeScript, Django, Django Rest Framework, API REST, React, Vite",
     "AiresBot Code" : "https://github.com/nicolas-aires-dev/AiresBot",
 
     "UrlShortener Resume" : "API REST de encutrtamento de links com BASE62.",
     "UrlShortener Objective" : "criar um projeto utilizado no dia a dia para estudar Dockerização de ambiente e Processamento Assíncrono com documentação de requisições via Postman.",
-    "UrlShortener Technologies" : "Python, Django, Django Rest Framework, Celery, Redis, Sqlite, Postman",
+    "UrlShortener Technologies" : "Python, Django, Django Rest Framework, Autenticação JWT, Celery, Redis, Sqlite, Postman",
     "UrlShortener Code" : "https://github.com/nicolas-aires-dev/url_shortener",
 
-    "CarsSale Resume" : "Projeto CRUD Fullstack de cadastro de carros à venda.",
-    "CarsSale Objective" : "Estudar integração com APIs externas (OpenAI), desenvolvimento Frontend e Deploy em com uWSGI+ Nginx em AWS EC2.",
+    "CarsSale Resume" : "projeto CRUD Fullstack de cadastro de carros à venda.",
+    "CarsSale Objective" : "estudar integração com APIs externas (OpenAI para gerar descrição automática do anúncio dos veículos), desenvolvimento Frontend e Deploy em com uWSGI+ Nginx em AWS EC2.",
     "CarsSale Technologies" : "Python, Django, Django Templates, OpenAI API, SQL Server, uWSGI/Nginx, Docker",
     "CarsSale Code" : "https://github.com/nicolas-aires-dev/CarsSale",
 
     "FlixAPI Resume" : "CRUD v1 para gerenciamento de filmes, generos e outras entidades relacionadas utilizando Django puro, e v2 com Django Rest Framework.",
     "FlixAPI Technologies" : "Python, Django, Django REST Framework, Sqlite",
-    "FlixAPI Objective" : "estudar o ganho de performance no desenvolvimento com DRF e em relação ao desenvolvimento com Django puro.",
+    "FlixAPI Objective" : "estudar o ganho de performance no desenvolvimento com DRF em relação ao desenvolvimento com Django puro.",
     "FlixAPI Code" : "https://github.com/nicolas-aires-dev/Flix_API",
 }
 
@@ -121,11 +121,12 @@ def answer_question(message: str) -> str:
 
     #UrlShortener
     if _has_any(text, "UrlShortener", "projeto encurtador", "projeto encurtador de links", "encurtador de links"):
-        return f"O projeto UrlShortener é uma {PROFILE["UrlShortener Resume"]} \n\n Com o objetivo de {PROFILE["UrlShortener Objective"]} \n\n Utilizando as tenologias: {PROFILE["UrlShortener Technologies"]} \n\n Link do repositório: {PROFILE['UrlShortener Code']}"
+        return f"O projeto UrlShortener é uma {PROFILE["UrlShortener Resume"]} \n\n Com o objetivo de {PROFILE["UrlShortener Objective"]} \n\n Utilizando as tecnologias: {PROFILE["UrlShortener Technologies"]} \n\n Link do repositório: {PROFILE['UrlShortener Code']}"
 
     #CarsSale
     if _has_any(text, "CarsSale", "projeto de carros", "projeto de venda de carros"):
-        return f"O projeto UrlShortener é uma {PROFILE["UrlShortener Resume"]} \n\n Com o objetivo de {PROFILE["UrlShortener Objective"]} \n\n Utilizando as tenologias: {PROFILE["UrlShortener Technologies"]} \n\n Link do repositório: {PROFILE['UrlShortener Code']}"
+        return f"O projeto CarsSale é um {PROFILE["CarsSale Resume"]} \n\n Com o objetivo de {PROFILE["CarsSale Objective"]} \n\n Utilizando as tecnologias: {PROFILE["CarsSale Technologies"]} \n\n Link do repositório: {PROFILE['CarsSale Code']}"
+    
     #FlixAPI
     if _has_any(text, "FlixAPI", "projeto netflix", "projeto de filmes", "projeto filmes"):
         return f"O projeto FlixAPI é um {PROFILE["FlixAPI Resume"]} \n\n Com o objetivo de {PROFILE["FlixAPI Objective"]} \n\n Usando as tecnologias: {PROFILE["FlixAPI Technologies"]} \n\n Link do repositório: {PROFILE["FlixAPI Code"]}"

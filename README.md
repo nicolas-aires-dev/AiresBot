@@ -1,10 +1,22 @@
 # AiresBot
 
-Chatbot rule-based para apresentar Nícolas Santos. O frontend usa React + Vite e conversa com uma API Django REST Framework.
+Chatbot de portfólio criado para apresentar a trajetória, as tecnologias e os projetos do Nícolas de forma interativa.
 
-## Rodar localmente
+## Versão atual: v1
 
-Em um terminal, inicie a API:
+A v1 usa regras e palavras-chave para identificar a intenção da pergunta e retornar uma resposta cadastrada. O frontend oferece uma interface de chat, perguntas sugeridas, indicador animado de digitação e links clicáveis nas respostas.
+
+Esta versão **não possui autenticação** e não usa IA para gerar respostas: o conteúdo é definido no backend.
+
+## Tecnologias
+
+- **Frontend:** React, TypeScript e Vite
+- **Backend:** Python, Django e Django REST Framework
+- **Comunicação:** API REST com CORS configurado para desenvolvimento local
+
+## Como executar localmente
+
+Na raiz do projeto, abra um terminal e inicie o backend:
 
 ```powershell
 .\venv\Scripts\Activate.ps1
@@ -20,12 +32,39 @@ npm install
 npm run dev
 ```
 
-Abra o endereço exibido pelo Vite (por padrão `http://localhost:5173`). A API fica em `http://127.0.0.1:8000/api/chat/`.
+Acesse o endereço informado pelo Vite, normalmente `http://localhost:5173`. A API fica disponível em `http://127.0.0.1:8000/api/chat/`.
 
-Para apontar o frontend para outra API, defina `VITE_API_URL` no arquivo `frontend/.env.local`, por exemplo `VITE_API_URL=https://api.exemplo.com` (sem `/api/chat/`).
+Para usar outra URL de API, crie `frontend/.env.local` e defina `VITE_API_URL` com a origem do backend, sem acrescentar `/api/chat/`:
 
-## Personalizar respostas
+```env
+VITE_API_URL=https://api.exemplo.com
+```
 
-Edite `backend/chatbot/knowledge.py`: atualize o resumo e preencha idade, stack, currículo, e-mail, GitHub e LinkedIn. As respostas sobre os campos vazios informam que o dado ainda não foi cadastrado. O endpoint aceita `POST` com `{"message":"Qual é a stack?"}` e responde com `{"answer":"..."}`. As regras e frases estão em `answer_question`.
+O CORS local permite `http://localhost:5173`. Para outro endereço de frontend, atualize `CORS_ALLOWED_ORIGINS` em `backend/backend/settings.py`.
 
-O CORS local permite `http://localhost:5173`; ajuste `CORS_ALLOWED_ORIGINS` em `backend/backend/settings.py` para outro endereço do frontend.
+## Personalizar o conteúdo
+
+As informações do perfil e as regras de resposta ficam em `backend/chatbot/knowledge.py`. Edite os dados do perfil e a função `answer_question` para acrescentar ou ajustar assuntos, palavras-chave e respostas.
+
+A API recebe uma pergunta por `POST`:
+
+```json
+{
+  "message": "Qual é a stack do Nícolas?"
+}
+```
+
+E retorna uma resposta neste formato:
+
+```json
+{
+  "answer": "..."
+}
+```
+
+## Próximos passos
+
+- **Autenticação:** planejo implementar autenticação em sessões numa etapa futura.
+- **v2 com IA:** mais adiante, pretendo lançar a v2 integrada com IA para ampliar a experiência de conversa.
+
+Esses itens fazem parte do roadmap e ainda não estão disponíveis na versão atual.
