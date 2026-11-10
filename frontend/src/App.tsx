@@ -60,6 +60,8 @@ function App() {
       })
       if (!response.ok) throw new Error('API indisponível')
       const data = (await response.json()) as ApiResponse
+      const typingDelay = Math.min(2200, Math.max(700, data.answer.length * 18))
+      await new Promise<void>((resolve) => window.setTimeout(resolve, typingDelay))
       setMessages((current) => [...current, { id: Date.now() + 1, role: 'bot', text: data.answer }])
     } catch {
       setApiError(true)
@@ -126,7 +128,7 @@ function App() {
                 <div className="message-content"><div className="bubble">{message.role === 'bot' ? linkify(message.text) : message.text}</div><span className="message-time">{message.role === 'bot' ? 'AiresBot' : 'Você'} · agora</span></div>
               </div>
             ))}
-            {loading && <div className="message-row bot"><div className="mini-avatar">✳</div><div className="bubble typing"><i /><i /><i /></div></div>}
+            {loading && <div className="message-row bot"><div className="mini-avatar">✳</div><div className="bubble typing" role="status" aria-label="AiresBot está digitando"><i /><i /><i /></div></div>}
             {apiError && <div className="connection-note">A conexão com o backend falhou.</div>}
             <div ref={bottomRef} />
           </div>
