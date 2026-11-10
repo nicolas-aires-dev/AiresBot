@@ -1,6 +1,6 @@
 # AiresBot
 
-Chatbot rule-based para apresentar Nícolas Santos. O frontend usa React + Vite e conversa com uma API Django REST Framework.
+Chatbot rule-based para apresentar Nícolas Aires. O frontend usa React + Vite e conversa com uma API Django REST Framework.
 
 ## Rodar localmente
 
