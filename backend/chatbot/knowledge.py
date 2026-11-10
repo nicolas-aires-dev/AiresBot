@@ -11,7 +11,8 @@ PROFILE = {
     "age": 23,  # Example: 25
     "education": "Cursando Engenharia de Software, com previsão de formação para Jul 2028.",
     "stack": ["Python", "Django", "APIs REST", "Git", "Github", "Autenticação JWT", "Docker", "Celery", "Redis", "Linux", "Pytest", "AWS EC2", "SQL", "React", "TypeScript"],  # Example: ["Python", "Django REST Framework", "React", "TypeScript"]
-    "resume_url": None,
+    "resume_url": "https://1drv.ms/b/c/4111fe76ed94f350/IQDSNgn7u9mZQKF1MR_27OlLAd68KRelRzUlMet_QsOXJnU?e=2V5tow",
+    "experience": "Estudante de Análise e Desenvolvimento de Sistemas, em transição para Engenharia de Software, com experiência na identificação de oportunidades de melhoria e desenvolvimento de soluções tecnológicas para problemas operacionais. Atuação prática com Python, automação de processos, desenvolvimento backend, APIs REST e integração de sistemas. Experiência na iniciativa e implantação de automações departamentais, incluindo ferramentas de processamento de arquivos técnicos e soluções com Inteligência Artificial. Conhecimentos em bancos de dados relacionais, Git/Github, Docker e desenvolvimento de aplicações. Perfil investigativo, curioso e movido à resolução de problemas, com facilidade para aprender novas tecnologias e utilizar ferramentas assistidas por IA como apoio ao desenvolvimento e à produtividade.",
     "email": "ni_colasaires@hotmail.com",
     "github_url": "https://github.com/nicolas-aires-dev",
     "linkedin_url": "https://br.linkedin.com/in/nairesdev",
@@ -64,7 +65,7 @@ def answer_question(message: str) -> str:
     if "linkedin" in text or "linked in" in text:
         url = PROFILE["linkedin_url"]
         return f"O LinkedIn de {name} está em {url}." if url else _value_or_pending(url, "LinkedIn")
-    if _has_any(text, "currículo", "curriculo", "cv", "resume", "experiência", "experiencia", "formação", "formacao"):
+    if _has_any(text, "currículo", "curriculo", "cv", "resume", "formação", "formacao"):
         url = PROFILE["resume_url"]
         return f"Você pode acessar o currículo de {name} aqui: {url}" if url else _value_or_pending(url, "Link do currículo")
     if _has_any(text, "stack", "tecnologias", "tecnologia", "linguagens", "framework", "ferramentas"):
@@ -77,6 +78,8 @@ def answer_question(message: str) -> str:
         return f"Os principais projetos de {name} são: \n\n{projects}"
     if _has_any(text, "quem é", "quem e", "sobre", "apresenta"):
         return PROFILE["summary"]
+    if _has_any(text, "Experiência", "profissional", "experiência profissional"):
+        return PROFILE["experience"]
     if _has_any(text, "formação", "formacao", "faculdade", "graduação", "graduacao", "formatura"):
         return f"{name} está {PROFILE['education']}"
     if _has_any(text, "oi", "olá", "ola", "bom dia", "boa tarde", "boa noite") and len(text.split()) <= 3:
