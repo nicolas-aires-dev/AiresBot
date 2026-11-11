@@ -102,7 +102,7 @@ function App() {
 
         <section className="chat-card" aria-label="Conversa com AiresBot">
           <div className="chat-header">
-            <div className="bot-avatar"><span>α</span></div>
+            <div className="bot-avatar"><span>a.</span></div>
             <div className="chat-title"><strong>AiresBot</strong><span><i /> online agora</span></div>
             <button className="more-button" aria-label="Mais opções">···</button>
           </div>
@@ -111,15 +111,15 @@ function App() {
             <div className="day-label"><span /> HOJE <span /></div>
             {messages.map((message) => (
               <div className={`message-row ${message.role}`} key={message.id}>
-                {message.role === 'bot' && <div className="mini-avatar">α</div>}
+                {message.role === 'bot' && <div className="mini-avatar">a.</div>}
                 <div className="message-content"><div className="bubble">{message.role === 'bot' ? linkify(message.text) : message.text}</div><span className="message-time">{message.role === 'bot' ? 'AiresBot' : 'Você'} · agora</span></div>
               </div>
             ))}
-            {loading && <div className="message-row bot"><div className="mini-avatar">α</div><div className="bubble typing" role="status" aria-label="AiresBot está digitando"><i /><i /><i /></div></div>}
+            {loading && <div className="message-row bot"><div className="mini-avatar">a.</div><div className="bubble typing" role="status" aria-label="AiresBot está digitando"><i /><i /><i /></div></div>}
             {apiError && <div className="connection-note">A conexão com o backend falhou.</div>}
             <div ref={bottomRef} />
           </div>
-          <div className="suggestion-launcher"><span>PRECISA DE UMA IDEIA?</span><button className="help-button" type="button" aria-label="Abrir perguntas sugeridas" onClick={() => setHelpOpen(true)}>?</button></div>
+          <div className="suggestion-launcher"><button className="suggestion-button" type="button" onClick={() => setHelpOpen(true)}>Perguntas sugeridas <span aria-hidden="true">↗</span></button></div>
           <form className="composer" onSubmit={onSubmit}>
             <input aria-label="Sua mensagem" placeholder="Escreva sua pergunta..." value={input} onChange={(event) => setInput(event.target.value)} onKeyDown={onKeyDown} disabled={loading} />
             <button type="submit" aria-label="Enviar mensagem" disabled={loading || !input.trim()}><span>↑</span></button>
@@ -144,7 +144,7 @@ function App() {
           </section>
         </div>
       )}
-      <footer className="page-footer"><span>© 2026 NÍCOLAS AIRES</span><span>UM PROJETO DE PORTFÓLIO <b>α</b></span><span>REACT <i>·</i> DJANGO REST FRAMEWORK</span></footer>
+      <footer className="page-footer"><span>© 2026 NÍCOLAS AIRES</span><span>UM PROJETO DE PORTFÓLIO <b>a.</b></span><span>REACT <i>·</i> DJANGO REST FRAMEWORK</span></footer>
     </main>
   )
 }

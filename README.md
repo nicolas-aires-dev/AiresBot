@@ -65,6 +65,9 @@ E retorna uma resposta neste formato:
 ## Próximos passos
 
 - **Autenticação:** planejo implementar autenticação em sessões numa etapa futura.
+- **Persistência de perguntas não respondidas:** planejo implementar um banco de dados para registrar perguntas que não possuem respostas cadastradas, permitindo identificar dúvidas recorrentes e ampliar a cobertura do chatbot.
+- **Painel ADM:** desenvolver uma interface para consultar perguntas pendentes, analisar sua frequência e cadastrar novas respostas sem necessidade de modificar diretamente o código-fonte.
+- **Aprimoramento do mecanismo de busca:** avaliar estruturas de dados estratégicas de correspondência mais eficientes conforme o crescimento da base de regras.
 - **v2 com IA:** mais adiante, pretendo lançar a v2 integrada com IA para ampliar a experiência de conversa.
 
 Esses itens fazem parte do roadmap e ainda não estão disponíveis na versão atual.
