@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import type { KeyboardEvent, SubmitEvent } from 'react'
+import heroImg from '../assets/images/hero.png'
 import './App.css'
 
 type Message = { id: number; role: 'bot' | 'user'; text: string }
@@ -29,7 +30,7 @@ function linkify(text: string) {
   return parts
 }
 
-const suggestions = ['Quem é Nícolas?', 'Qual é a stack dele?', 'Como entrar em contato?']
+const suggestions = ['Quem é o Nícolas?', 'Qual é a stack dele?', 'Qual é a idade dele?', 'Onde encontro o currículo?', 'Quais são os projetos dele?', 'Como entro em contato?']
 const apiUrl = `${import.meta.env.VITE_API_URL ?? 'http://127.0.0.1:8000'}/api/chat/`
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const [apiError, setApiError] = useState(false)
+  const [helpOpen, setHelpOpen] = useState(false)
   const bottomRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -93,25 +95,9 @@ function App() {
 
       <section className="chat-layout" id="inicio">
         <aside className="intro-panel">
-          <div className="eyebrow"><span className="eyebrow-line" /> PORTFÓLIO INTERATIVO</div>
+          <div className="eyebrow"><span className="eyebrow-line" /> PORTFÓLIO INTERATIVO</div><div className="hero-portrait"><img src={heroImg} alt="Nícolas em uma ilustração com referências a tecnologia e desenvolvimento" /></div>
           <h1>Uma conversa<br />sobre <span>mim.</span></h1>
           <p className="intro-copy">Conheça minha trajetória, minhas tecnologias e o que estou buscando. Pode perguntar direto ao ponto.</p>
-          <div className="profile-card">
-            <div className="avatar">N<span className="avatar-spark">α</span></div>
-            <div><div className="profile-name">Nícolas Aires</div><div className="profile-role">Desenvolvedor · Brasil</div></div>
-            <span className="profile-arrow">↗</span>
-          </div>
-          <div className="topics-label">EXPERIMENTE PERGUNTAR</div>
-          <div className="topic-list">
-            <button onClick={() => void sendMessage('Quem é Nícolas?')}><span>01</span> Quem é Nícolas?</button>
-            <button onClick={() => void sendMessage('Qual é a stack de tecnologias?')}><span>02</span> Qual é a stack?</button>
-            <button onClick={() => void sendMessage('Onde encontro o currículo?')}><span>03</span> Ver currículo</button>
-            <button onClick={() => void sendMessage('Projetos de Nícolas')}><span>04</span> Projetos </button>
-            <button onClick={() => void sendMessage('Formação de Nícolas')}><span>05</span> Formação </button>
-            <button onClick={() => void sendMessage('Expêriencia profissional de Nícolas')}><span>08</span> Experiência Profissional</button>
-            <button onClick={() => void sendMessage('Como posso entrar em contato?')}><span>09</span> Como entrar em contato?</button>
-          </div>
-          <div className="aside-footer"><span>FEITO COM CURIOSIDADE</span><span>α</span></div>
         </aside>
 
         <section className="chat-card" aria-label="Conversa com AiresBot">
@@ -133,7 +119,7 @@ function App() {
             {apiError && <div className="connection-note">A conexão com o backend falhou.</div>}
             <div ref={bottomRef} />
           </div>
-          <div className="quick-questions"><span>PERGUNTAS RÁPIDAS</span><div>{suggestions.map((item) => <button key={item} onClick={() => void sendMessage(item)} disabled={loading}>{item}<span>↗</span></button>)}</div></div>
+          <div className="suggestion-launcher"><span>PRECISA DE UMA IDEIA?</span><button className="help-button" type="button" aria-label="Abrir perguntas sugeridas" onClick={() => setHelpOpen(true)}>?</button></div>
           <form className="composer" onSubmit={onSubmit}>
             <input aria-label="Sua mensagem" placeholder="Escreva sua pergunta..." value={input} onChange={(event) => setInput(event.target.value)} onKeyDown={onKeyDown} disabled={loading} />
             <button type="submit" aria-label="Enviar mensagem" disabled={loading || !input.trim()}><span>↑</span></button>
@@ -141,6 +127,23 @@ function App() {
           <div className="chat-footnote">AiresBot pode cometer erros. Confirme as informações importantes.</div>
         </section>
       </section>
+      {helpOpen && (
+        <div className="modal-backdrop" onClick={() => setHelpOpen(false)}>
+          <section className="suggestions-modal" role="dialog" aria-modal="true" aria-labelledby="suggestions-title" onClick={(event) => event.stopPropagation()}>
+            <button className="modal-close" type="button" aria-label="Fechar perguntas" onClick={() => setHelpOpen(false)}>×</button>
+            <span className="modal-kicker">AIRESBOT · SUGESTÕES</span>
+            <h2 id="suggestions-title">O que você quer saber?</h2>
+            <p>Escolha uma pergunta para começar a conversa.</p>
+            <div className="suggestion-list">
+              {suggestions.map((question) => (
+                <button key={question} type="button" onClick={() => { setHelpOpen(false); void sendMessage(question) }}>
+                  {question}<span aria-hidden="true">↗</span>
+                </button>
+              ))}
+            </div>
+          </section>
+        </div>
+      )}
       <footer className="page-footer"><span>© 2026 NÍCOLAS AIRES</span><span>UM PROJETO DE PORTFÓLIO <b>α</b></span><span>REACT <i>·</i> DJANGO REST FRAMEWORK</span></footer>
     </main>
   )
