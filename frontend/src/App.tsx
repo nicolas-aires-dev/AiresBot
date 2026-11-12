@@ -31,7 +31,9 @@ function linkify(text: string) {
 }
 
 const suggestions = ['Quem é o Nícolas?', 'Qual é a stack dele?', 'Qual é a idade dele?', 'Onde encontro o currículo?', 'Quais são os projetos dele?', 'Como entro em contato?']
-const apiUrl = `${import.meta.env.VITE_API_URL ?? 'http://127.0.0.1:8000'}/api/chat/`
+const API_URL = import.meta.env.VITE_API_URL ||
+  (import.meta.env.DEV ? 'http://127.0.0.1:8000' : '');
+const apiUrl = `${API_URL}/api/chat/`;
 
 function App() {
   const [messages, setMessages] = useState<Message[]>([
