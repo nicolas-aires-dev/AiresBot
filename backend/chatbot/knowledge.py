@@ -17,7 +17,7 @@ PROFILE = {
     "github_url": "https://github.com/nicolas-aires-dev",
     "linkedin_url": "https://br.linkedin.com/in/nairesdev",
     "location": "Sorocaba - SP, disponível para vagas remotas em todo o Brasil, e Híbridas a depender do modelo.",
-    "looking_for": "oportunidades que o permitam acelerar sua carreira em tecnologia, buscando projetos cada vez mais desafiantes, e evoluir enquanto contribui com soluções eficientes que impactem verdadeiramente o mercado e a vida dos clientes.",
+    "looking_for": "oportunidades que o permitam acelerar sua carreira em tecnologia, buscando projetos cada vez mais desafiantes, e evoluir enquanto contribui com soluções eficientes que impactem verdadeiramente o mercado e a vida das pessoas.",
     "projects": ["AiresBot: Projeto portfólio interativo via chatbot.",
                  "DxfReader: Projeto de automação de processamento de projetos CAD.",
                  "UrlShortener: API de encurtador de link com processamento assincrono, testes e dockerização.",
@@ -144,11 +144,11 @@ def answer_question(message: str) -> str:
         return f"{name} está {PROFILE['education']}"
 
     #Greetings
-    if _has_any(text, "oi", "olá", "ola", "bom dia", "boa tarde", "boa noite") and len(text.split()) <= 3:
+    if _has_any(text, "oi", "olá", "ola", "bom dia", "boa tarde", "boa noite" "apresentação") and len(text.split()) <= 3:
         return f"Oi! Sou o AiresBot. Posso contar um pouco sobre {name} e seus projetos."
     
-    #Searching for
-    if _has_any(text, "vaga", "oportunidade", "trabalho", "buscando", "procura"):
+    #Looking for
+    if _has_any(text, "vaga", "oportunidade", "oportunidades", "trabalho", "buscando", "procura"):
         return f"{name} está buscando {PROFILE['looking_for']}."
     
     #Years old
@@ -163,5 +163,13 @@ def answer_question(message: str) -> str:
     #Help
     if _has_any(text, "ajuda", "perguntas", "o que sabe", "o que posso perguntar"):
         return "Você pode perguntar sobre apresentação, tecnologias, idade, currículo, contato, GitHub, LinkedIn ou oportunidades."
-    
+
+    #Test
+    if _has_any(text, "teste", "testando"):
+        return "Tudo funcionando! Você pode perguntar sobre apresentação, tecnologias, idade, currículo, contato, GitHub, LinkedIn ou oportunidades"
+
+    #Blip Blip 👀
+    if text.strip().lower() == "blip":
+        return "Blip Blip! 👀 Acho que temos algo em comum... me contrata? kkk"
+        
     return FALLBACK
