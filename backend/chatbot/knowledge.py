@@ -144,11 +144,11 @@ def answer_question(message: str) -> str:
         return f"{name} está {PROFILE['education']}"
 
     #Greetings
-    if _has_any(text, "oi", "olá", "ola", "bom dia", "boa tarde", "boa noite") and len(text.split()) <= 3:
+    if _has_any(text, "oi", "olá", "ola", "bom dia", "boa tarde", "boa noite" "apresentação") and len(text.split()) <= 3:
         return f"Oi! Sou o AiresBot. Posso contar um pouco sobre {name} e seus projetos."
     
-    #Searching for
-    if _has_any(text, "vaga", "oportunidade", "trabalho", "buscando", "procura"):
+    #Looking for
+    if _has_any(text, "vaga", "oportunidade", "oportunidades", "trabalho", "buscando", "procura"):
         return f"{name} está buscando {PROFILE['looking_for']}."
     
     #Years old
@@ -163,5 +163,9 @@ def answer_question(message: str) -> str:
     #Help
     if _has_any(text, "ajuda", "perguntas", "o que sabe", "o que posso perguntar"):
         return "Você pode perguntar sobre apresentação, tecnologias, idade, currículo, contato, GitHub, LinkedIn ou oportunidades."
+
+    #Test
+    if _has_any(text, "teste", "testando"):
+        return "Tudo funcionando! Você pode perguntar sobre apresentação, tecnologias, idade, currículo, contato, GitHub, LinkedIn ou oportunidades"
     
     return FALLBACK
