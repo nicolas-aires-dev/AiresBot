@@ -167,5 +167,9 @@ def answer_question(message: str) -> str:
     #Test
     if _has_any(text, "teste", "testando"):
         return "Tudo funcionando! Você pode perguntar sobre apresentação, tecnologias, idade, currículo, contato, GitHub, LinkedIn ou oportunidades"
+
+    #Blip Blip 👀
+    if _has_any(text, "blip"): 
+        return "Me contrata kkkk."
     
     return FALLBACK
