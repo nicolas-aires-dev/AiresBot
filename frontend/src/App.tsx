@@ -37,7 +37,7 @@ const apiUrl = `${API_URL}/api/chat/`;
 
 function App() {
   const [messages, setMessages] = useState<Message[]>([
-    { id: 1, role: 'bot', text: 'Oi! Eu sou o AiresBot, um chatbot feito para apresentar o Nícolas. O que você gostaria de saber?' },
+    { id: 1, role: 'bot', text: 'Oi! Eu sou o AiresBot. 👋\n Estou aqui para apresentar o Nícolas, seus projetos e suas experiências.\n Explore no seu ritmo.\nAfinal, acredito em conversas que geram resultados.\nO que você gostaria de descobrir?' },
   ])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
