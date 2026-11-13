@@ -30,7 +30,7 @@ function linkify(text: string) {
   return parts
 }
 
-const suggestions = ['Quem é o Nícolas?', 'Qual é a stack dele?', 'Qual é a idade dele?', 'Qual a formação dele:', 'Onde encontro o currículo?', 'Quais são os projetos dele?', 'Como entro em contato?']
+const suggestions = ['Quem é o Nícolas?', 'Qual é a stack dele?', 'Qual é a idade dele?', 'Qual a formação dele?', 'Onde encontro o currículo?', 'Quais são os projetos dele?', 'Como entro em contato?']
 const API_URL = import.meta.env.VITE_API_URL ||
   (import.meta.env.DEV ? 'http://127.0.0.1:8000' : '');
 const apiUrl = `${API_URL}/api/chat/`;
