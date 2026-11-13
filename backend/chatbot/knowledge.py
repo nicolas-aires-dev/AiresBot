@@ -17,7 +17,7 @@ PROFILE = {
     "github_url": "https://github.com/nicolas-aires-dev",
     "linkedin_url": "https://br.linkedin.com/in/nairesdev",
     "location": "Sorocaba - SP, disponível para vagas remotas em todo o Brasil, e Híbridas a depender do modelo.",
-    "looking_for": "oportunidades que o permitam acelerar sua carreira em tecnologia, buscando projetos cada vez mais desafiantes, e evoluir enquanto contribui com soluções eficientes que impactem verdadeiramente o mercado e a vida dos clientes.",
+    "looking_for": "oportunidades que o permitam acelerar sua carreira em tecnologia, buscando projetos cada vez mais desafiantes, e evoluir enquanto contribui com soluções eficientes que impactem verdadeiramente o mercado e a vida das pessoas.",
     "projects": ["AiresBot: Projeto portfólio interativo via chatbot.",
                  "DxfReader: Projeto de automação de processamento de projetos CAD.",
                  "UrlShortener: API de encurtador de link com processamento assincrono, testes e dockerização.",
