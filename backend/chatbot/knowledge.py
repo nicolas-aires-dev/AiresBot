@@ -169,7 +169,7 @@ def answer_question(message: str) -> str:
         return "Tudo funcionando! Você pode perguntar sobre apresentação, tecnologias, idade, currículo, contato, GitHub, LinkedIn ou oportunidades"
 
     #Blip Blip 👀
-    if _has_any(text, "blip"): 
-        return "Me contrata kkkk."
-    
+    if text.strip().lower() == "blip":
+        return "Blip Blip! 👀 Acho que temos algo em comum... me contrata? kkk"
+        
     return FALLBACK
