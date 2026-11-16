@@ -11,7 +11,7 @@ PROFILE = {
     "age": 23,  # Example: 25
     "education": "em transferência do curso de Análise e desenvolvimento de sistemas para o curso para Engenharia de Software, com previsão de formação para Jul 2028.",
     "stack": ["Python", "Django", "APIs REST", "Git", "Github", "Autenticação JWT", "Docker", "Celery", "Redis", "Linux", "Pytest", "AWS EC2", "SQL", "React", "TypeScript"],  # Example: ["Python", "Django REST Framework", "React", "TypeScript"]
-    "resume_url": "https://1drv.ms/b/c/4111fe76ed94f350/IQBGuo4ZB35GRZxiDo_kidm0AQTPdA-ywJJDxYOD6kln7ls?e=m379v0",
+    "resume_url": "https://1drv.ms/b/c/4111fe76ed94f350/IQDL5I0tEnJiR7biF4y6tPW0AXXb9U9N8fA22aJ5fjGb2Qg?e=F2Q3pm",
     "experience": "Estudante de Análise e Desenvolvimento de Sistemas, em transição para Engenharia de Software, com experiência na identificação de oportunidades de melhoria e desenvolvimento de soluções tecnológicas para problemas operacionais. Atuação prática com Python, automação de processos, desenvolvimento backend, APIs REST e integração de sistemas. Experiência na iniciativa e implantação de automações departamentais, incluindo ferramentas de processamento de arquivos técnicos e soluções com Inteligência Artificial. Conhecimentos em bancos de dados relacionais, Git/Github, Docker e desenvolvimento de aplicações. Perfil investigativo, curioso e movido à resolução de problemas, com facilidade para aprender novas tecnologias e utilizar ferramentas assistidas por IA como apoio ao desenvolvimento e à produtividade.",
     "email": "ni_colasaires@hotmail.com",
     "github_url": "https://github.com/nicolas-aires-dev",
